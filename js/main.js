@@ -1,6 +1,6 @@
 Function.prototype.method = function (name, func) {
-	if (this.prototype.name) {
-		this.prototype.name = func;
+	if (!this.prototype[name]) {
+		this.prototype[name] = func;
 		return this;
 	}
 };
@@ -39,4 +39,33 @@ var app = {};
 
 app.Sudoku = function (area) {
 
+	var that = this;
+	var table = document.createElement('table');
+	var area = area || 3;
+	var expo = area * area;
+
+	table.addClass('sudoku');
+
+	for (var i = 0; expo > i; i++) {
+
+		var row = table.insertRow(-1);
+
+		for (var j = 0; expo > j; j++) {
+
+			var cell = row.insertCell(-1);
+			cell.innerHTML = i + ';' + j;
+
+		}
+
+	}
+
+	that.table = table;
+
+	console.log(table);
 };
+
+var tbl = new app.Sudoku(3);
+
+document.body.appendChild(tbl.table);
+
+//app.Sudoku();
