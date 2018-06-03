@@ -55,13 +55,37 @@ app.Sudoku = function (area) {
 			var cell = row.insertCell(-1);
 			cell.innerHTML = i + ';' + j;
 
+			switch (i % area) {
+				case 0:
+					cell.addClass('top');
+				break;
+				case area - 1:
+					cell.addClass('bottom');
+				break;
+			}
+
+			switch (j % area) {
+				case 0:
+					cell.addClass('left');
+				break;
+				case area - 1:
+					cell.addClass('right');
+				break;
+			}
+
 		}
+			
 
 	}
 
 	that.table = table;
+	that.expo  = expo;
 
 	console.log(table);
+};
+
+app.Sudoku.prototype = {
+	
 };
 
 var tbl = new app.Sudoku(3);
